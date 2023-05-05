@@ -1,1 +1,57 @@
-<p>categoria works!</p>
+<div class="card">
+  <h1>Lista de Personal</h1>
+  <!-- {{ categorias|json }}-->
+
+  <p-button (click)="showModalDialogCategoria()" icon="pi pi-external-link" label="Show"></p-button>
+  <p-dialog header="Header" [(visible)]="displayModalCategoria" [modal]="true" [style]="{width: '50vw'}" styleClass="p-fluid"
+    [draggable]="false" [resizable]="false">
+
+    <div class="field">
+      <label for="description">Nombre</label>
+      <input type="text" pInputText />
+    </div>
+
+    <input type="text" pInputText />
+
+    <div class="field">
+      <label for="description">Detalle</label>
+      <textarea id="description" pInputTextarea  required rows="3" cols="20"></textarea>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="displayModalCategoria=false" label="Ok"
+        styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-dialog>
+
+  <form [formGroup]="categoriaForm">
+    <input type="text" formControlName="nombre">
+    <input type="text" formControlName="detalle">
+    <button type="button" (click)="enviarCategoria()" [disabled]="!categoriaForm.valid">{{(categoria_id==-1)?'Guardar
+      Categoria':'Actualizar Categoria'}}</button>
+  </form>
+
+  <p-table [value]="categorias" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>CARGO</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-categoria>
+      <tr>
+        <td>{{categoria.id}}</td>
+        <td>{{categoria.categoria}}</td>
+        <td>{{categoria.detalle}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+            (click)="editarCategoria(categoria)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+            (click)="eliminarCategoria(categoria)"></button>
+        </td>
+      </tr>
+    </ng-template> I
+  </p-table>
+</div>

@@ -9,6 +9,13 @@ import { HttpClientModule} from '@angular/common/http'
 import { CoreModule } from '../core/core.module';
 
 
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FormsModule } from '@angular/forms';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+
+
 @NgModule({
   declarations: [
     LoginComponent,//componentes,
@@ -19,7 +26,13 @@ import { CoreModule } from '../core/core.module';
     AuthRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    ButtonModule,
+    CheckboxModule,
+    InputTextModule,
+    FormsModule,
+    PasswordModule
+
   ]
 })
 export class AuthModule { }
